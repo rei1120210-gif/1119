@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智光商工 - 數位科技概論 智慧數位學習平台 | 期末專題</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Light Effects -->
+  <div class="bg-glow"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-section" id="brandSection">
+      <div class="brand-logo-badge">智</div>
+      <div class="brand-titles">
+        <h1>
+          智光商工 
+          <span class="badge-tag">數位科技概論</span>
+        </h1>
+        <p>期末專題 • 智慧互動數位學習與測驗系統</p>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="main-nav" id="mainNav">
+      <a class="nav-link active" data-tab="tabOverview">
+        <i class="fa-solid fa-house"></i> 首頁總覽
+      </a>
+      <a class="nav-link" data-tab="tabChapters">
+        <i class="fa-solid fa-book"></i> 數位教材
+      </a>
+      <a class="nav-link" data-tab="tabQuiz">
+        <i class="fa-solid fa-circle-question"></i> 隨堂測驗
+      </a>
+      <a class="nav-link" data-tab="tabExercises">
+        <i class="fa-solid fa-pen-to-square"></i> 習作題庫
+      </a>
+      <a class="nav-link" data-tab="tabDrills">
+        <i class="fa-solid fa-layer-group"></i> 觀念診斷
+      </a>
+      <a class="nav-link" data-tab="tabAudioLab">
+        <i class="fa-solid fa-headphones"></i> 語音中心
+      </a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Quick Audio Greeting Button -->
+      <button class="btn-audio-quick" id="btnQuickAudio" title="點擊朗讀校名">
+        <i class="fa-solid fa-volume-high"></i> 智光商工
+      </button>
+
+      <!-- Global Search -->
+      <button class="btn-icon" id="btnSearchModal" title="搜尋教材與題目 (Ctrl+K)">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <!-- Sound Effects Toggle -->
+      <button class="btn-icon" id="btnSoundToggle" title="音效設定">
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button class="btn-icon" id="btnThemeToggle" title="切換深淺模式">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="btn-icon mobile-toggle" id="btnMobileMenu" title="展開選單">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-container">
+
+    <!-- ==================== Tab 1: 首頁總覽 (Overview) ==================== -->
+    <section class="tab-content active" id="tabOverview">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-text">
+          <div class="chapter-badge mb-2">
+            <i class="fa-solid fa-graduation-cap"></i> 智光商工 108 課綱專用教材
+          </div>
+          <h2>數位科技概論 • 互動學習入口</h2>
+          <p>
+            全面整合第 3 章至第 6 章核心課本教材、課後習作及歷屆隨堂測驗卷。支援原版電子書線上翻閱、即時智慧計分測驗、互動觀念對比與全站語音朗讀輔助系統！
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary btn-switch-tab" data-tab="tabQuiz">
+              <i class="fa-solid fa-play"></i> 開始隨堂測驗
+            </button>
+            <button class="btn-secondary btn-switch-tab" data-tab="tabChapters">
+              <i class="fa-solid fa-book-open"></i> 閱讀章節教材
+            </button>
+            <button class="btn-secondary btn-switch-tab" data-tab="tabExercises">
+              <i class="fa-solid fa-list-check"></i> 習作精選練習
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">重點章節</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">103</div>
+            <div class="stat-label">精選題庫</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statAccuracyRate">--%</div>
+            <div class="stat-label">答對率</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statHighScore">--</div>
+            <div class="stat-label">最佳成績</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Highlights -->
+      <div class="features-row">
+        <div class="feature-box">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <div class="feature-info">
+            <h4>原版電子書線上讀</h4>
+            <p>直接內嵌高解析 PDF 教科書與習作本，章節導讀一目瞭然。</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background: rgba(16, 185, 129, 0.12); color: var(--success);">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div class="feature-info">
+            <h4>即時回饋測驗系統</h4>
+            <p>隨選即答，內建 Web Audio 音效與詳細解析，強化答題記憶。</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background: rgba(99, 102, 241, 0.12); color: var(--secondary);">
+            <i class="fa-solid fa-volume-high"></i>
+          </div>
+          <div class="feature-info">
+            <h4>語音朗讀輔助 (TTS)</h4>
+            <p>支援題目、章節重點朗讀，打造無障礙多感官學習環境。</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background: rgba(245, 158, 11, 0.12); color: var(--warning);">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div class="feature-info">
+            <h4>統測素養考題精選</h4>
+            <p>涵蓋情境題、工作排程、雲端架構與 DRAM/SRAM 深度解析。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Cards Grid -->
+      <div class="section-title-wrap">
+        <h3 class="section-title">
+          <span class="indicator"></span> 核心課程章節專區
+        </h3>
+        <button class="btn-secondary btn-switch-tab" data-tab="tabChapters" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+          檢視全部教材 <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="grid-chapters">
+        <!-- Ch 3 -->
+        <div class="card-chapter">
+          <div class="chapter-badge">Chapter 03</div>
+          <h3>系統平台的組成架構－硬體</h3>
+          <p>深入探討電腦五大單元、CPU 架構與機器週期、DRAM 與 SRAM 對比、SSD 與 HDD、以及高速傳輸介面規格。</p>
+          <div class="card-chapter-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-regular fa-file"></i> 32 頁教材</span>
+            <button class="btn-chapter-action btn-switch-tab" data-tab="tabChapters" onclick="currentChapterId=3; renderChapterDetail(3);">
+              進入閱讀 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ch 4 -->
+        <div class="card-chapter">
+          <div class="chapter-badge">Chapter 04</div>
+          <h3>系統平台的組成架構－軟體與網路</h3>
+          <p>介紹系統軟體與應用軟體之分類、常見作業系統（Windows、Linux、macOS）比較及雲端運算 IaaS、PaaS、SaaS 三層架構。</p>
+          <div class="card-chapter-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-regular fa-file"></i> 16 頁教材</span>
+            <button class="btn-chapter-action btn-switch-tab" data-tab="tabChapters" onclick="currentChapterId=4; renderChapterDetail(4);">
+              進入閱讀 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ch 5 -->
+        <div class="card-chapter">
+          <div class="chapter-badge">Chapter 05</div>
+          <h3>系統平台的運作與未來發展</h3>
+          <p>以 Google 地圖為例解析系統平台運作、CPU 程序狀態與排程演算法（FCFS, SJF, RR），並探討人工智慧與物聯網新趨勢。</p>
+          <div class="card-chapter-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-regular fa-file"></i> 18 頁教材</span>
+            <button class="btn-chapter-action btn-switch-tab" data-tab="tabChapters" onclick="currentChapterId=5; renderChapterDetail(5);">
+              進入閱讀 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ch 6 -->
+        <div class="card-chapter">
+          <div class="chapter-badge">Chapter 06</div>
+          <h3>辦公室軟體與影像∕影音軟體</h3>
+          <p>掌握辦公室必備 Office 套件、點陣圖與向量圖差異、Photoshop 影像編修、Audacity 音訊剪輯、影片製作及智慧財產權授權法規。</p>
+          <div class="card-chapter-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-regular fa-file"></i> 11 頁教材</span>
+            <button class="btn-chapter-action btn-switch-tab" data-tab="tabChapters" onclick="currentChapterId=6; renderChapterDetail(6);">
+              進入閱讀 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Tab 2: 數位教材庫 (Chapters & PDF Reader) ==================== -->
+    <section class="tab-content" id="tabChapters">
+      <div class="section-title-wrap">
+        <h3 class="section-title">
+          <span class="indicator"></span> 數位教材閱讀與電子書庫
+        </h3>
+      </div>
+
+      <div class="chapter-reader-layout">
+        <!-- Sidebar Navigation -->
+        <div class="chapter-nav-sidebar">
+          <div class="sidebar-title">章節導覽</div>
+          <div class="sidebar-list" id="chapterSidebarList">
+            <!-- Dynamically populated by JS -->
+          </div>
+          
+          <div class="mt-4 pt-3 border-top" style="border-color: var(--border);">
+            <div class="sidebar-title mb-2">快速文件下載</div>
+            <a href="exercise/exercise.pdf" target="_blank" class="sidebar-item" style="padding: 0.65rem 0.85rem;">
+              <span><i class="fa-regular fa-file-lines text-warning me-2"></i> 完整習作本 PDF</span>
+            </a>
+            <a href="quiz/quizChap3_4.pdf" target="_blank" class="sidebar-item" style="padding: 0.65rem 0.85rem;">
+              <span><i class="fa-regular fa-file-lines text-primary me-2"></i> 隨堂測驗卷 PDF</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Pane -->
+        <div class="chapter-detail-pane" id="chapterDetailPane">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Tab 3: 隨堂測驗系統 (Interactive Quiz) ==================== -->
+    <section class="tab-content" id="tabQuiz">
+      <div class="quiz-dashboard">
+        <div class="filter-bar">
+          <div class="filter-group" id="quizFilterGroup">
+            <button class="filter-btn active" data-filter="all">
+              <i class="fa-solid fa-layer-group"></i> 全真模擬期末考 (隨機 20 題)
+            </button>
+            <button class="filter-btn" data-filter="3">
+              <i class="fa-solid fa-microchip"></i> 第 3 章 (硬體架構)
+            </button>
+            <button class="filter-btn" data-filter="4">
+              <i class="fa-solid fa-network-wired"></i> 第 4 章 (軟體網路)
+            </button>
+            <button class="filter-btn" data-filter="5">
+              <i class="fa-solid fa-robot"></i> 第 5 章 (系統運作)
+            </button>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <i class="fa-solid fa-circle-info"></i> 點選選項即可即時對答與觀看解析
+          </div>
+        </div>
+
+        <div class="quiz-status-bar" id="quizStatusBar">
+          <div class="font-weight-bold" style="font-size: 0.92rem;">
+            題目進度：第 <span id="quizCurrentIdx" class="text-primary font-weight-bold">1</span> / <span id="quizTotalCount">20</span> 題
+          </div>
+          <div class="progress-container">
+            <div class="progress-fill" id="quizProgressFill"></div>
+          </div>
+          <button class="btn-secondary" onclick="startQuizSession()" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">
+            <i class="fa-solid fa-shuffle"></i> 重新抽題
+          </button>
+        </div>
+
+        <!-- Quiz Question Card Container -->
+        <div id="quizCardContainer">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Quiz Results Container -->
+        <div id="quizResultContainer" style="display: none;">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Tab 4: 課後習作題庫 (Exercises) ==================== -->
+    <section class="tab-content" id="tabExercises">
+      <div class="section-title-wrap">
+        <h3 class="section-title">
+          <span class="indicator"></span> 課後習作本練習與素養情境題
+        </h3>
+      </div>
+
+      <div class="quiz-dashboard mb-3">
+        <div class="filter-bar">
+          <div class="filter-group" id="exerciseFilterGroup">
+            <button class="filter-btn active" data-filter="3">
+              <i class="fa-solid fa-microchip"></i> 第 3 章 習作本題目
+            </button>
+            <button class="filter-btn" data-filter="4">
+              <i class="fa-solid fa-network-wired"></i> 第 4 章 習作本題目
+            </button>
+            <button class="filter-btn" data-filter="5">
+              <i class="fa-solid fa-robot"></i> 第 5 章 習作本題目
+            </button>
+            <button class="filter-btn" data-filter="6">
+              <i class="fa-solid fa-photo-film"></i> 第 6 章 習作本題目
+            </button>
+          </div>
+        </div>
+
+        <div id="exercisesListContainer">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Tab 5: 觀念診斷與對比 (Concept Drills) ==================== -->
+    <section class="tab-content" id="tabDrills">
+      <div class="section-title-wrap">
+        <h3 class="section-title">
+          <span class="indicator"></span> 重點觀念診斷與深度對比表
+        </h3>
+      </div>
+
+      <div class="drill-section" id="drillsContainer">
+        <!-- Dynamically populated by JS -->
+      </div>
+    </section>
+
+
+    <!-- ==================== Tab 6: 語音中心與實驗室 (Audio Lab) ==================== -->
+    <section class="tab-content" id="tabAudioLab">
+      <div class="section-title-wrap">
+        <h3 class="section-title">
+          <span class="indicator"></span> 語音輔助中心與音效控制台
+        </h3>
+      </div>
+
+      <div class="audio-lab-card">
+        <!-- School Audio Branding -->
+        <div class="audio-branding-highlight">
+          <div class="audio-source-info">
+            <span class="audio-file-badge"><i class="fa-regular fa-file-lines"></i> audio.txt 來源</span>
+            <div class="audio-source-text">智光商工</div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn-primary" id="btnSpeakSchool">
+              <i class="fa-solid fa-volume-high"></i> 朗讀「智光商工」
+            </button>
+            <button class="btn-secondary" id="btnSpeakIntro">
+              <i class="fa-solid fa-play"></i> 播放平台導覽語音
+            </button>
+          </div>
+        </div>
+
+        <h4 class="mb-3 font-weight-bold" style="font-size: 1.05rem;">
+          <i class="fa-solid fa-sliders text-primary"></i> 語音朗讀合成參數調整 (Speech Synthesis)
+        </h4>
+
+        <div class="tts-controls-grid">
+          <div class="control-item">
+            <label for="ttsRate">語速調整 (Rate: <span id="rateVal">1.0</span>x)</label>
+            <input type="range" id="ttsRate" min="0.5" max="2.0" step="0.1" value="1.0" oninput="document.getElementById('rateVal').textContent=this.value">
+          </div>
+          <div class="control-item">
+            <label for="ttsPitch">音調調整 (Pitch: <span id="pitchVal">1.0</span>)</label>
+            <input type="range" id="ttsPitch" min="0.5" max="1.5" step="0.1" value="1.0" oninput="document.getElementById('pitchVal').textContent=this.value">
+          </div>
+        </div>
+
+        <div class="control-item mb-4">
+          <label for="customTtsInput">輸入自訂文字進行語音測試：</label>
+          <textarea id="customTtsInput" placeholder="請在此輸入任何中文或科技名詞，例如：中央處理單元由算術邏輯單元與控制單元組成..."></textarea>
+          <div class="d-flex justify-content-end mt-2">
+            <button class="btn-primary" id="btnSpeakCustom">
+              <i class="fa-solid fa-bullhorn"></i> 立即朗讀輸入文字
+            </button>
+          </div>
+        </div>
+
+        <h4 class="mb-3 font-weight-bold" style="font-size: 1.05rem;">
+          <i class="fa-solid fa-music text-accent"></i> 系統合成音效試聽 (Web Audio Synthesizer)
+        </h4>
+        <div class="soundboard-grid">
+          <button class="sound-btn" id="btnTestCorrect">
+            <i class="fa-solid fa-circle-check text-success"></i>
+            <span>答對升音和弦</span>
+          </button>
+          <button class="sound-btn" id="btnTestWrong">
+            <i class="fa-solid fa-circle-xmark text-danger"></i>
+            <span>答錯提示音</span>
+          </button>
+          <button class="sound-btn" id="btnTestFanfare">
+            <i class="fa-solid fa-crown text-warning"></i>
+            <span>滿分通關號角</span>
+          </button>
+          <button class="sound-btn" id="btnTestClick">
+            <i class="fa-solid fa-computer-mouse text-primary"></i>
+            <span>按鍵點擊觸發音</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Search Modal (Ctrl + K) -->
+  <div class="modal-overlay" id="searchModal">
+    <div class="modal-box">
+      <div class="search-input-header">
+        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+        <input type="text" id="searchInput" placeholder="搜尋章節、核心概念、測驗或習作題目...">
+        <button class="btn-icon" id="btnCloseSearch" style="width: 32px; height: 32px;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="search-results-list" id="searchResults">
+        <!-- Results rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <h4>智光商工 • 數位科技概論智慧學習網</h4>
+        <p>期末專題成果作品 (Final Project) • 依據 108 技術型高中課綱編製</p>
+      </div>
+      <div class="footer-tags">
+        <span class="badge-tag">Ch03~Ch06</span>
+        <span class="badge-tag">Web Speech TTS</span>
+        <span class="badge-tag">Web Audio API</span>
+        <span class="badge-tag">響應式設計</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="course-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
